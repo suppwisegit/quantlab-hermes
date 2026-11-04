@@ -1,0 +1,43 @@
+[project]
+name = "quantlab-hermes"
+version = "0.7.0"
+description = "QuantLab Hermes-Toolset — MCP-Server mit 20 Trading-Tools + Skill-Instructions für den autonomen Planspiel-Börse-Agenten"
+requires-python = ">=3.13"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn>=0.34",
+    "sse-starlette>=2.2",
+    "yfinance>=0.2.54",
+    "httpx>=0.28",
+    "pandas>=2.2",
+    "numpy>=2.2",
+    "openai>=1.60",
+    "keyring>=25.6",
+    "ddgs>=9.16.0",
+    "trafilatura>=2.2.0",
+    "mcp>=1.26",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.3",
+    "pytest-asyncio>=0.25",
+    "httpx>=0.28",
+    "ruff>=0.9",
+]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+pythonpath = ["."]
+asyncio_mode = "auto"
+markers = [
+    "live: echte Netz-/API-Tests, nur mit RUN_LIVE=1",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
